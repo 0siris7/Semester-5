@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<conio.h>
+struct process
+{
+       int pid,size,malot;
+}pr;
+struct memory
+{
+       int mid,size;
+}my;
+int main()
+{
+    int i,j,msl[100];
+    pr.mslot=0;
+    printf("enter the no:of processes");
+    scanf("%d",&n);
+    for(i=0;i<=n;i++)
+    {
+                     printf("\nenter the content");
+                     scanf("%d",&pr.pid);
+                     printf("\nenter the size");
+                     scanf("%d",&pr.size);
+                     
+    }
+    for(i=0;i<=n;i++)
+    {
+                    printf("\nenter the mid for m/y");
+                    scanf("%d",&my.mid);
+                    printf("\nenter the size ");
+                    scanf("%d",&my.size);
+                    msl[i]=my.size;
+    }
+    getch();
+    for(i=0;i<=n;i++)
+    {
+                     for(j=0;j<=n;j++)
+                     {
+                                      if(pr.size<=my.size)
+                                      {
+                                                           pr.mlot=my.mid;
+                                                           my.size=my.size-pr.size;
+                                      }
+                     }
+                     break;
+    }
+    for(i=0;i<=n;i++)
+    {
+                     if(pr.malot=0)
+                     printf("insufficent memory");
+    }
+    printf("\n pid/size/malot");
+    for(i=0;i<=n;i++);
+    {
+                      printf("\n%d\t%d\t%d",&pr.pid,&pr.size,&pr.malot);
+    }
+    getch();
+}
+                      
+                     
+                                        
+
+      

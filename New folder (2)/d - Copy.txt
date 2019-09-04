@@ -1,0 +1,204 @@
+***************************************************************************
+NAME:LALU RAJ                                      EXPERIMENT NO:2
+DATE:04-09-18					   ROLL NO:35
+						   S5 CSE-A
+   
+           PAGING TECHNIQUES OF MEMORY MANAGEMENT
+
+***************************************************************************
+PROGRAM:
+
+#include<stdio.h>
+#include<conio.h>
+struct process
+{
+       int pid,size,my;
+       
+}s[100];
+struct memory
+{
+       int id,size,size1;
+}m[10],temp,n;
+
+int i,np,nm,j;
+
+void sortas(struct memory n[]) 
+{
+     for(i=1;i<=nm;i++)
+     {
+        for(j=1;j<=nm-i;j++)
+        {
+           if(n[j].size>n[j+1].size)
+           {
+              temp=n[j];
+              n[j]=n[j+1];
+              n[j+1]=temp;
+           }
+        }
+    }
+}
+void sortde(struct memory n[]) 
+{
+     for(i=1;i<=nm;i++)
+     {
+        for(j=1;j<=nm-i;j++)
+        {
+           if(n[j].size<n[j+1].size)
+           {
+              temp=n[j];
+              n[j]=n[j+1];
+              n[j+1]=temp;
+           }
+        }
+    }
+}
+int main()
+{
+    int i,j,ch;
+    printf("\nEnter the no. process : ");
+    scanf("%d",&np);
+    printf("\nEnter th size of each process: ");
+    for(i=1;i<=np;i++)
+    {
+         scanf("%d",&s[i].size);
+         s[i].my=0;
+         s[i].pid=i;
+    }
+     printf("\nEnter the no. memory blocks : ");
+    scanf("%d",&nm);
+    printf("\nEnter th size of each memory blocks: ");
+    for(i=1;i<=nm;i++)
+    {
+         scanf("%d",&m[i].size);
+         m[i].id=i;
+         m[i].size1=m[i].size;
+    }
+    printf("\n1.first fit\n2.Best fit\n3.Worst fit\nEnter the choice: ");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+      case 1 :
+               for(i=1;i<=np;i++)
+               {
+                 for(j=1;j<=nm;j++)
+                 {
+                  if(s[i].size<m[j].size)
+                   {
+                     s[i].my=m[j].id;
+                     m[j].size-=s[i].size;
+                     break;
+                   }
+                 }
+               }
+               break;
+               
+     case 2 : 
+          for(i=1;i<=nm;i++)
+              m[i].size=m[i].size1;
+              for(i=1;i<=np;i++)
+                 s[i].my=0;
+                 sortas(m);
+                  for(i=1;i<=np;i++)
+               {
+                 for(j=1;j<=nm;j++)
+                 {
+                  if(s[i].size<m[j].size)
+                   {
+                     s[i].my=m[j].id;
+                     m[j].size-=s[i].size;
+                     break;
+                   }
+                 
+                 }
+                 sortas(m);
+               }
+               break;
+     case 3: 
+           for(i=1;i<=nm;i++)
+              m[i].size=m[i].size1;
+              for(i=1;i<=np;i++)
+                 s[i].my=0;
+                 sortde(m);
+                  for(i=1;i<=np;i++)
+               {
+                 for(j=1;j<=nm;j++)
+                 {
+                  if(s[i].size<m[j].size)
+                   {
+                     s[i].my=m[j].id;
+                     m[j].size-=s[i].size;
+                     break;
+                   }
+                 
+                 }
+                 sortde(m);
+               }
+                 
+          break;
+          }           
+                 
+                 
+                    
+         
+    printf("\npid\tsize\tmemory");
+    for(i=1;i<=np;i++)
+    {
+      printf("\n%d",s[i].pid);
+      printf("\t%d",s[i].size);
+      if(s[i].my==0)
+           { printf("\tNot allowed");
+           }
+      else
+           printf("\t%d",s[i].my);
+    }  
+      getch();
+} 
+
+                      
+***************************************************************************
+OUTPUT:
+
+Enter the no. process : 4
+
+Enter th size of each process: 212
+417
+112
+426
+
+Enter the no. memory blocks : 5
+
+Enter th size of each memory blocks: 100
+500
+200
+300
+600
+
+1.first fit
+2.Best fit
+3.Worst fit
+Enter the choice: 1
+
+pid     size    memory
+1       212     2
+2       417     5
+3       112     2
+4       426     Not allowed
+
+
+
+Enter the choice: 2
+
+pid     size    memory
+1       212     4
+2       417     2
+3       112     3
+4       426     5
+
+Enter the choice: 3
+
+pid     size    memory
+1       212     5
+2       417     2
+3       112     5
+4       426     Not allowed
+***************************************************************************

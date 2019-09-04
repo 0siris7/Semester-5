@@ -1,0 +1,86 @@
+***************************************************************************
+NAME:LALU RAJ                                      EXPERIMENT NO:1d
+DATE:04-08-18					   ROLL NO:35
+						   S5 CSE-A
+   
+                        ROUND ROBIN
+
+***************************************************************************
+PROGRAM:
+
+#include<stdio.h>
+#include<conio.h>
+struct process
+{
+       int bt,wt,tat,pid,b;
+       
+}s[100];
+int main()
+{
+    int n,i,tq,temp=0,f=0;
+    printf("enter the no of processes");
+    scanf("%d",&n);
+    printf("enter the quantum");
+    scanf("%d",&tq);
+    for(i=1;i<=n;i++)
+    {
+                    s[i].pid=i;
+                    printf("enter the burst time ");
+                    scanf("%d",&s[i].bt);
+                    s[i].b=s[i].bt;
+    }
+    while(f!=n)
+    {
+  for(i=1;i<=n;i++)
+  {
+                   if(s[i].bt==0)
+                   continue;
+                   s[i].wt=temp;
+                   if(s[i].bt>tq)
+                   {
+                                  s[i].bt-=tq;
+                                  s[i].tat=tq+s[i].wt;
+                   }
+                    else
+                    {
+                       s[i].tat=s[i].bt+s[i].wt;
+                         s[i].bt=0;
+                       }
+                       temp=s[i].tat;
+                   
+  }
+  f=0;
+  for(i=1;i<=n;i++)
+  {
+                   if(s[i].bt==0)
+                   f++;
+  }
+}
+  printf("\npid\tbt\twt\ttat");
+  for(i=1;i<=n;i++)
+  {
+                   printf("\n%d",s[i].pid);
+                   printf("\t%d",s[i].b);
+                   s[i].wt=s[i].tat-s[i].b;
+                   printf("\t%d",s[i].wt);
+                   printf("\t%d",s[i].tat);
+  }
+  getch();
+}
+
+                      
+***************************************************************************
+OUTPUT:
+enter the no of processes4
+enter the quantum10
+enter the burst time 10
+enter the burst time 15
+enter the burst time 20
+enter the burst time 5
+
+pid     bt      wt      tat
+1       10      0       10
+2       15      25      40
+3       20      30      50
+4       5       30      35
+***************************************************************************

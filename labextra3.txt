@@ -1,0 +1,43 @@
+  1  create or replace procedure snum(a in number,b in number,c in number) as
+  2  maxx number;
+  3  minn number;
+  4  BEGIN
+  5  IF a>b THEN
+  6   IF a>c THEN
+  7    maxx:=a;
+  8  END IF;
+  9  END IF;															
+ 10  IF b>a THEN				
+ 11  IF b>c THEN				
+ 12  maxx:=b;					
+ 13  END IF;			
+ 14  END IF;						
+ 15  IF c>a THEN	
+ 16  IF c>b THEN	
+ 17  maxx:=c;	
+ 18  END IF;														
+ 19  END IF;	
+ 20  IF a<b THEN		
+ 21   IF a<c THEN
+ 22    minn:=a;
+ 23  END IF;			
+ 24  END IF;	
+ 25  IF b<a THEN	
+ 26  IF b<c THEN	
+ 27  minn:=b;	
+ 28  END IF;															
+ 29  END IF;	
+ 30  IF c<a THEN	
+ 31  IF c<b THEN	
+ 32  minn:=c;	
+ 33  END IF;	
+ 34  END IF;	
+ 35  dbms_output.Put_line(maxx ||''||' is the highest');	
+ 36  dbms_output.Put_line(minn ||''||' is the smallest');	
+ 37* END;										
+ 38  /
+												
+  1  begin
+  2  snum(1,2,3);
+  3* end;
+SQL> /

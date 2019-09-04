@@ -1,0 +1,24 @@
+INPUT
+
+	PGM START 0
+	ABC MACRO
+	    STA A
+	    STB B
+	    MEND
+	    ABC
+	    ABC
+	    END
+ 
+
+
+
+OUTPUT
+
+	PGM START 0
+	. ABC
+	STA A
+	STB B
+	.ABC
+	STA A
+	STB B
+	END

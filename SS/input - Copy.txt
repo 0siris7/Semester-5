@@ -1,0 +1,10 @@
+COPY    START   2000
+*       LDA     FILE
+*       STA     ALPHA
+*       LDCH    CHAR2
+*       STCH    C1
+ALPHA   RESW    1
+FILE    WORD    5
+CHAR2   BYTE    C'2'
+C1      RESB    1
+*       END

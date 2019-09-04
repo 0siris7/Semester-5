@@ -1,0 +1,21 @@
+  1  DECLARE
+  2  beg  number:=0;
+  3  en number:=0;
+  4  s number:=0;
+  5  BEGIN
+  6  beg:=&beg;
+  7  en:=&en;
+  8  wHILE beg<=en LOOP
+  9  s:=s+beg;
+ 10  beg:=beg+1;
+ 11  END LOOP;
+ 12  dbms_output.put_line('sum is ' || s);
+ 13* END;
+SQL> /
+Enter value for beg: 5
+old   6: beg:=&beg;
+new   6: beg:=5;
+Enter value for en: 9
+old   7: en:=&en;
+new   7: en:=9;
+sum is 35

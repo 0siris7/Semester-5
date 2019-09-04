@@ -1,0 +1,18 @@
+ DECLARE
+    cursor c is select * from debit;
+    n integer := &n;
+    k integer;
+  BEGIN
+    for i in c
+    loop
+    if MOD(i.cno,2)!=0  and i.balance > 1000 then
+    k := i.balance - n;
+    if k>1000 then
+    update debit set balance=k where cno=i.cno;
+    dbms_output.put_line('Account issued ');
+    else
+    dbms_output.put_line('NOT pOSSIBLE');
+    end if;
+    end if;
+    end loop;
+  END;

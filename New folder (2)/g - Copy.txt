@@ -1,0 +1,107 @@
+***************************************************************************
+NAME:LALU RAJ                                      EXPERIMENT NO:3b
+DATE:04-09-18					   ROLL NO:35
+						   S5 CSE-A
+   
+                           SCAN
+
+***************************************************************************
+PROGRAM:
+
+#include<stdio.h>
+#include<conio.h>
+void sort(int w[],int q)
+{
+     int i,j,t;
+	for(i=0;i<q;i++)
+        for(j=0;j<q-i-1;j++)
+            if(w[j]>w[j+1])
+            {
+                 t=w[j];
+                 w[j]=w[j+1];
+                 w[j+1]=t;
+ }          }
+int main()
+{
+    int i,n,q,hd,hi,c,l;
+    printf("\nEnter the number of tracks : ");
+    scanf("%d",&n);
+    int p[n];
+    printf("\nEnter the size of the work queue : ");
+    scanf("%d",&q);
+    int w[q];
+    printf("\nEnter the work queue elements : ");
+    for(i=0;i<q;i++)
+    {
+       scanf("%d",&w[i]);
+    }
+    printf("\nEntered elemets are : ");
+    for(i=0;i<q;i++)
+    {
+       printf("%d\t",w[i]);
+    }
+    sort(w,q);
+    printf("\nEntered elemets after sort : ");
+    for(i=0;i<q;i++)
+    {
+       printf("%d\t",w[i]);
+    }
+    printf("\nEnter the Head start position: ");
+    scanf("%d",&hd);
+    int seek=0;
+    for(i=0;i<q;i++)
+    {
+      if((w[i]<100)&(w[i+1]>100))
+      {
+        hi=i+1;
+        l=i;
+      }
+    }
+    printf("path : %d ",hd);
+    for(i=l;i>=0;i--)
+    { 
+       printf("\npath : %d ",w[i]);
+       seek=seek+(hd-w[i]);
+       hd=w[i];
+    }
+    printf("\npath : %d ",0);
+    seek=seek+w[0];
+    hd=0;
+    for(i=hi;i<q;i++)
+   {
+     printf("\npath: %d ",w[i]);
+     seek=seek+(w[i]-hd);
+     hd=w[i];
+   }
+    printf("\nseek time : %d ",seek);
+    
+    getch();
+}
+
+                      
+***************************************************************************
+OUTPUT:
+
+Enter the number of tracks : 200
+
+Enter the size of the work queue : 5
+
+Enter the work queue elements : 23
+89
+132
+42
+187
+
+Entered elemets are : 23        89      132     42      187
+Entered elemets after sort : 23 42      89      132     187
+Enter the Head start position: 100
+path : 100
+path : 89
+path : 42
+path : 23
+path : 0
+path: 132
+path: 187
+seek time : 287
+
+***************************************************************************

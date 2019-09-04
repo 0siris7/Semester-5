@@ -1,0 +1,39 @@
+ create or replace function knum(a in number,b in number,c in number) return number as
+ maxx number;
+ minn number;
+ BEGIN
+ IF a>b THEN
+  IF a>c THEN
+   maxx:=a;
+ END IF;
+ END IF;
+ IF b>a THEN
+ IF b>c THEN
+ maxx:=b;
+ END IF;
+ END IF;
+ IF c>a THEN
+ IF c>b THEN
+ maxx:=c;
+ END IF;
+ END IF;
+ IF a<b THEN
+  IF a<c THEN
+   minn:=a;
+ END IF;
+ END IF;
+ IF b<a THEN
+ IF b<c THEN
+ minn:=b;
+ END IF;
+ END IF;
+ IF c<a THEN
+ IF c<b THEN
+ minn:=c;
+ END IF;
+ END IF;
+ return minn;
+ return maxx;
+ END;
+/
+

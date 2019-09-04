@@ -1,0 +1,9 @@
+create or replace function fac(a in number) return number as
+res number;
+BEGIN
+IF (res EQUALS 1) THEN
+return res;
+ELSE
+res=res*(fac(res-1));
+END IF;
+/

@@ -1,0 +1,21 @@
+ DECLARE
+   cursor c is select rno,name,mark2,mark2 from student;
+   r student.rno%type;
+   n student.name%type;
+   m1 student.mark1%type;
+   m2 student.mark2%type;
+   s integer := 0;
+ BEGIN
+    open c;
+    loop
+    fetch c into r,n,m1,m2;
+    s := m1+m2;
+    if (s>=80) or (m2>=34 and m1>=34) then
+    insert into pass values(r,n,m1,m2);
+    else
+    insert into pass values(r,n,m1,m2);
+    end if;
+    exit when c%notfound;
+    end loop;
+    close c;
+ END;

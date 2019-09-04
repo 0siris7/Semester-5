@@ -1,0 +1,21 @@
+DECLARE
+cursor c is select * from student;
+n student.name%type;
+m1 student.mark1%type;
+m2 student.mark2%type;
+r student.regnumber%type;
+tot integer:=0;
+BEGIN
+OPEN C;
+LOOP
+FETCH C INTO n,m1,m2,r;
+tot:=m1+m2;
+IF (tot>=80) OR (m1>=44 AND m2>=34) THEN
+insert into pass values(r,n,m1,m2);
+ELSE
+insert into fail values(r,n,m1,m2);
+END IF;
+EXIT WHEN C% NOTFOUND;
+END LOOP;
+CLOSE C;
+END;

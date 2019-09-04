@@ -1,0 +1,39 @@
+declare
+	cursor CS is select * from student where trade='CS' group by total_mark;
+	cursor ME is select * from student where trade='ME' group by total_mark;
+	roll student.roll_no%type;
+	name student.name%type;
+	mark student.total_mark%type;
+	trade student.trade%type;
+begin
+	for i in CS loop
+		if i.total_mark>90 then
+			update student set(rank='A+') where trade='CS' and roll=roll_no;
+		else if i.total_mark>80 then
+			update student set(rank='A') where trade='CS' and roll=roll_no;
+		else if i.total_mark>70 then
+			update student set(rank='B') where trade='CS' and roll=roll_no;
+		else if i.total_mark>60 then
+			update student set(rank='C') where trade='CS' and roll=roll_no;
+		else if i.total_mark>=50 then
+			update student set(rank='D') where trade='CS' and roll=roll_no;
+		else if i.total_mark<50 then
+			update student set(rank='F') where trade='CS' and roll=roll_no;
+		end if;
+	end loop;
+	for i in ME loop
+		if i.total_mark>90 then
+			update student set(rank='A+') where trade='ME' and roll=roll_no;
+		else if i.total_mark>80 then
+			update student set(rank='A') where trade='ME' and roll=roll_no;
+		else if i.total_mark>70 then
+			update student set(rank='B') where trade='ME' and roll=roll_no;
+		else if i.total_mark>60 then
+			update student set(rank='C') where trade='ME' and roll=roll_no;
+		else if i.total_mark>=50 then
+			update student set(rank='D') where trade='ME' and roll=roll_no;
+		else if i.total_mark<50 then
+			update student set(rank='F') where trade='ME' and roll=roll_no;
+		end if;
+	end loop;
+end;

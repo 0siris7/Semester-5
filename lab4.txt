@@ -1,0 +1,19 @@
+  1  DECLARE
+  2  a number:=0;
+  3  b number:=0;
+  4  c number:=0;
+  5  BEGIN
+  6  b:=&b;
+  7  wHILE a<=b LOOP
+  8  c:=c+a;
+  9  a:=a+1;
+ 10  END LOOP;
+ 11  dbms_output.put_line('sum is' || c);
+ 12* END;
+SQL> /
+Enter value for b: 5
+old   6: b:=&b;
+new   6: b:=5;
+sum is15
+
+********************************************************************************

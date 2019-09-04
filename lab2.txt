@@ -1,0 +1,474 @@
+SQL> create table customer(cid varchar(7) PRIMARY KEY check(cid like 'c%'),name varchar(15) not null
+,dateoreg varchar(15),userid varchar(15) UNIQUE,password varchar(15) NOT NULL);
+
+Table created.
+
+SQL> insert into customer values('&cid','&name','&dateoreg','&userid','&password');
+Enter value for cid: c1000
+Enter value for name: madhav
+Enter value for dateoreg: 22-feb-12
+Enter value for userid: mmmmm
+Enter value for password: mpmpm
+old   1: insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+new   1: insert into customer values('c1000','madhav','22-feb-12','mmmmm','mpmpm')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+SQL> /
+Enter value for cid: c1001
+Enter value for name: bobby
+Enter value for dateoreg: 13-mar-12
+Enter value for userid: bbbbb
+Enter value for password: bpbpb
+old   1: insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+new   1: insert into customer values('c1001','bobby','13-mar-12','bbbbb','bpbpb')
+
+1 row created.
+
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+SQL> /
+Enter value for cid: c1002
+Enter value for name: catherine
+Enter value for dateoreg: 16-apr-12
+Enter value for userid: ccccc
+Enter value for password: cpcpc
+old   1: insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+new   1: insert into customer values('c1002','catherine','16-apr-12','ccccc','cpcpc')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+SQL> /
+Enter value for cid: c1003
+Enter value for name: katie
+Enter value for dateoreg: 21-may-12
+Enter value for userid: kkkkk
+Enter value for password: kpkpk
+old   1: insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+new   1: insert into customer values('c1003','katie','21-may-12','kkkkk','kpkpk')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+SQL> /
+Enter value for cid: c1004
+Enter value for name: vijay
+Enter value for dateoreg: 10-jun-12
+Enter value for userid: vvvvv
+Enter value for password: vpvpv
+old   1: insert into customer values('&cid','&name','&dateoreg','&userid','&password')
+new   1: insert into customer values('c1004','vijay','10-jun-12','vvvvv','vpvpv')
+
+1 row created.
+
+SQL> set linesize 200;
+SQL> select * from customer
+  2  ed;
+
+CID     NAME            DATEOREG        USERID          PASSWORD
+------- --------------- --------------- --------------- ---------------
+c1000   madhav          22-feb-12       mmmmm           mpmpm
+c1001   bobby           13-mar-12       bbbbb           bpbpb
+c1002   catherine       16-apr-12       ccccc           cpcpc
+c1003   katie           21-may-12       kkkkk           kpkpk
+c1004   vijay           10-jun-12       vvvvv           vpvpv
+
+SQL> 
+
+  1* create table item(itemcode varchar(15) check(itemcode like 'i%') PRIMARY KEY,itemname varchar(1
+SQL> /
+
+Table created.
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i100
+Enter value for itemname: pen
+Enter value for unitprice: 10
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i100','pen','10')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i101
+Enter value for itemname: pencil
+Enter value for unitprice: 6
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i101','pencil','6')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i102
+Enter value for itemname: eraser
+Enter value for unitprice: 4
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i102','eraser','4')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i103
+Enter value for itemname: pen
+Enter value for unitprice: 17
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i103','pen','17')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i103
+Enter value for itemname: 
+Enter value for unitprice: 
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i103','','')
+insert into item(itemcode,itemname,unitprice) values('i103','','')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (O16RR434.SYS_C003220) violated
+
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i104
+Enter value for itemname: book
+Enter value for unitprice: 20
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i104','book','20')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+SQL> /
+Enter value for itemcode: i105
+Enter value for itemname: book
+Enter value for unitprice: 40
+old   1: insert into item(itemcode,itemname,unitprice) values('&itemcode','&itemname','&unitprice')
+new   1: insert into item(itemcode,itemname,unitprice) values('i105','book','40')
+
+1 row created.
+
+SQL> select * from item;
+
+ITEMCODE        ITEMNAME        UNITPRICE       QTY
+--------------- --------------- --------------- ---------------
+i100            pen             10
+i101            pencil          6
+i102            eraser          4
+i103            pen             17
+i104            book            20
+i105            book            40
+
+6 rows selected.
+
+SQL> 
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* create table customerpurchase( custid varchar(15),itemid varchar(15),qty varchar(15),billno var
+SQL> /
+
+Table created.
+
+SQL> set linesize 200;
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+  2  /
+Enter value for custid: c1000
+Enter value for itemid: i100
+Enter value for qty: 10
+Enter value for billno: b1
+Enter value for netprice: 100
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1000','i100','10','b1','100')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1001
+Enter value for itemid: i101
+Enter value for qty: 5
+Enter value for billno: b2
+Enter value for netprice: 30
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1001','i101','5','b2','30')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1002
+Enter value for itemid: i102
+Enter value for qty: 20
+Enter value for billno: b3
+Enter value for netprice: 80
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1002','i102','20','b3','80')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1003
+Enter value for itemid: i103
+Enter value for qty: 10
+Enter value for billno: b4
+Enter value for netprice: 170
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1003','i103','10','b4','170')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1004
+Enter value for itemid: i104
+Enter value for qty: 20
+Enter value for billno: b5
+Enter value for netprice: 400
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1004','i104','20','b5','400')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1003
+Enter value for itemid: i105
+Enter value for qty: 10
+Enter value for billno: b6
+Enter value for netprice: 50
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1003','i105','10','b6','50')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1000
+Enter value for itemid: i100
+Enter value for qty: 30
+Enter value for billno: b8
+Enter value for netprice: 300
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1000','i100','30','b8','300')
+
+1 row created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1* insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+SQL> /
+Enter value for custid: c1001
+Enter value for itemid: i101
+Enter value for qty: 20
+Enter value for billno: b7
+Enter value for netprice: 120
+old   1: insert into customerpurchase values('&custid','&itemid','&qty','&billno','&netprice')
+new   1: insert into customerpurchase values('c1001','i101','20','b7','120')
+
+1 row created.
+
+SQL> select * from customerpurchase;
+
+CUSTID          ITEMID          QTY             BILLNO          NETPRICE
+--------------- --------------- --------------- --------------- ---------------
+c1000           i100            10              b1              100
+c1001           i101            5               b2              30
+c1002           i102            20              b3              80
+c1003           i103            10              b4              170
+c1004           i104            20              b5              400
+c1003           i105            10              b6              50
+c1000           i100            30              b8              300
+c1001           i101            20              b7              120
+
+8 rows selected.
+SQL> select itemname,count(*) from item group by itemname;
+
+ITEMNAME          COUNT(*)
+--------------- ----------
+book                     2
+eraser                   1
+pen                      2
+pencil                   1
+
+SQL> select custid,name from customerpurchase,customer where customerpurchase.custid=customer.cid;
+
+CUSTID          NAME
+--------------- ---------------
+c1000           madhav
+c1001           bobby
+c1002           catherine
+c1003           katie
+c1004           vijay
+c1003           katie
+c1000           madhav
+c1001           bobby
+
+SQL> select cid,name from customer where dateoreg>'1-jun-12';
+
+CID     NAME
+------- ---------------
+c1000   madhav
+c1001   bobby
+c1002   catherine
+c1003   katie
+c1004   vijay
+
+SQL> select * from customerpurchase,customer where customerpurchase.custid=customer.cid and customer
+.name like('c%t%');
+
+CUSTID          ITEMID          QTY             BILLNO          NETPRICE        CID     NAME            DATEOREG        USERID          PASSWORD
+--------------- --------------- --------------- --------------- --------------- ------- ------------
+c1002           i102            20              b3              80              c1002   catherine       16-apr-12       ccccc           cpcpc
+
+
+  1*  select distinct(itemname) from customerpurchase,item where customerpurchase.itemid=item.itemco
+SQL> /
+
+ITEMNAME
+---------------
+book
+eraser
+pen
+pencil
+
+  1* select custid,name,itemid from customer,customerpurchase where customerpurchase.custid=customer
+SQL> /
+
+CUSTID          NAME            ITEMID
+--------------- --------------- ---------------
+c1000           madhav          i100
+c1001           bobby           i101
+c1002           catherine       i102
+c1003           katie           i103
+c1004           vijay           i104
+c1003           katie           i105
+c1000           madhav          i100
+c1001           bobby           i101
+
+
+  1* select distinct custid,name from customerpurchase,customer where customerpurchase.custid=customer.cid and customerpurchase.qty>1
+  2  /
+
+CUSTID          NAME
+--------------- ---------------
+c1000           madhav
+c1001           bobby
+c1002           catherine
+c1003           katie
+c1004           vijay
+
+  1* select custid,name,qty from customerpurchase,customer where customerpurchase.custid=customer.cid;
+SQL> /
+
+CUSTID          NAME            QTY
+--------------- --------------- ---------------
+c1000           madhav          10
+c1001           bobby           5
+c1002           catherine       20
+c1003           katie           10
+c1004           vijay           20
+c1003           katie           10
+c1000           madhav          30
+c1001           bobby           20
+
+8 rows selected.
+
+select custid,name,sum(netprice) from customer,customerpurchase where customer.cid=customerpurchase.custid group by custid,name
+CUSTID          NAME            SUM(NETPRICE)
+--------------- --------------- -------------
+c1000           madhav                    400
+c1001           bobby                     150
+c1002           catherine                  80
+c1003           katie                     220
+c1004           vijay                     400
+
+
+  1* select itemname,unitprice from item,customerpurchase where customerpurchase.itemid=item.itemcode
+SQL> /
+
+ITEMNAME        UNITPRICE
+--------------- ---------------
+pen             10
+pencil          6
+eraser          4
+pen             17
+book            20
+book            40
+pen             10
+pencil          6
+
+8 rows selected.
+SQL> select * from item where unitprice=(select min(unitprice) from item);
+
+ITEMCODE        ITEMNAME        UNITPRICE       QTY
+--------------- --------------- --------------- ---------------
+i102            eraser             4
+
+select custid,sum(netprice) from customerpurchase group by custid having sum(netprice)=(select max(sum(netprice)) from customerpurchase group by custid)
+CUSTID          SUM(NETPRICE)
+--------------- -------------
+c1000                     400
+c1004                     400

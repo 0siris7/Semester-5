@@ -1,0 +1,143 @@
+***************************************************************************
+NAME:JERIN THOMAS MATHEW                                      EXPT NO:11
+DATE:21/11/2017                                               ROLL NO:31
+                                                              BATCH  :S3 CSA
+                  LINEAR SEARCH AND BINARY SEARCH
+***************************************************************************
+#include <stdio.h>
+#include<conio.h>
+void linsearch(int a[],int n,int s)
+{
+     int i;
+     for(i=0;i<n;i++)
+     {
+      if(a[i]==s)
+      {
+       printf("%d is present at location %d. \n",s,i+1);
+       break;
+      }
+     }
+     if(i==n)
+      printf("%d not present in the array.",s);
+}
+
+void binsearch(int array[],int n,int search)
+{
+  int first,last,middle;
+   first = 0;
+   last = n - 1;
+   middle = (first+last)/2;
+ 
+   while (first <= last) {
+      if (array[middle] < search)
+         first = middle + 1;    
+      else if (array[middle] == search) {
+         printf("%d found at location %d.\n", search, middle+1);
+         break;
+      }
+      else
+         last = middle - 1;
+ 
+      middle = (first + last)/2;
+   }
+   if (first > last)
+      printf("Not found! %d is not present in the list.\n", search);
+}
+main()
+{
+   int array[100], search, c, n,ch;
+   printf("Enter the number of elements in array\n");
+   scanf("%d",&n);
+   printf("Enter %d integers\n", n);
+   for (c = 0; c < n; c++)
+      scanf("%d", &array[c]);
+   do
+   {   
+    printf("Enter the number to search\n");
+    scanf("%d", &search);
+    printf("\n1.Linear search\n");
+    printf("2.Binary search\n");
+    printf("Enter your choice: ");
+    scanf("%d",&ch);
+    switch(ch)
+    {
+     case 1: {
+              linsearch(array,n,search);
+              break;
+             }
+     case 2: {
+              binsearch(array,n,search);
+              break;
+             }          
+    
+    }
+    printf("Do you want to continue ? (Y=1 AND N=0): ");
+    scanf("%d",&ch);
+   }while(ch==1);
+}
+
+
+***************************************************************************
+ //OUTPUT
+
+
+Enter the number of elements in array
+5
+Enter 5 integers
+1
+2
+3
+4
+5
+Enter the number to search
+4
+
+1.Linear search
+2.Binary search
+Enter your choice: 1
+4 is present at location 4.
+Do you want to continue ? (Y=1 AND N=0): 1
+Enter the number to search
+3
+
+1.Linear search
+2.Binary search
+Enter your choice: 2
+3 found at location 3.
+Do you want to continue ? (Y=1 AND N=0): 1
+Enter the number to search
+6
+
+1.Linear search
+2.Binary search
+Enter your choice: 1
+6 not present in the array.Do you want to continue ? (Y=1 AND N=0): 1
+Enter the number to search
+6
+
+1.Linear search
+2.Binary search
+Enter your choice: 2
+Not found! 6 is not present in the list.
+Do you want to continue ? (Y=1 AND N=0):
+
+
+***************************************************************************         
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

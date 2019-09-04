@@ -1,0 +1,16 @@
+  1  Create or replace trigger t1 after insert or delete or update on lecture
+  2  DECLARE
+  3       cursor c is select branch,count(*) as c,sum(c_credit) as s from lecture group by branch;
+  4  BEGIN
+  5       for i in c
+  6       loop
+  7          update branch_status set tot_credit = i.s where branch=i.branch;
+  8          update branch_status set tot_lecture = i.c where branch=i.branch;
+  9          if SQL%NOTFOUND then
+ 10           insert into branch_status values(i.branch,i.s,i.c);
+ 11          end if;
+ 12       end loop;
+ 13* END;
+SQL> /
+
+Trigger created.

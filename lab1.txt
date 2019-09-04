@@ -1,0 +1,356 @@
+ from 
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create table employee(eid int ,lname varchar(15),fname varchar(15),mname varchar(15),jobid int,
+SQL> /
+
+Table created.
+
+SQL> insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+  2  ed
+  3  ed;
+Enter value for eid: 1000
+Enter value for lname: john
+Enter value for fname: smith
+Enter value for mname: b
+Enter value for jobid: 111
+Enter value for doj: 12-june-12
+Enter value for salary: 25000
+Enter value for dept: 1
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1000,'john','smith','b',111,'12-june-12',25000,1)
+ed
+*
+
+  1* insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept);
+SQL> /
+Enter value for eid: 1000
+Enter value for lname: john
+Enter value for fname: smith
+Enter value for mname: b
+Enter value for jobid: 111
+Enter value for doj: 12-june-12
+Enter value for salary: 25000
+Enter value for dept: 1
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept);
+new   1: insert into employee values(1000,'john','smith','b',111,'12-june-12',25000,1);
+insert into employee values(1000,'john','smith','b',111,'12-june-12',25000,1);
+                                                                             *
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+SQL> /
+Enter value for eid: 1000
+Enter value for lname: john
+Enter value for fname: smith
+Enter value for mname: b
+Enter value for jobid: 111
+Enter value for doj: 12-june-12
+Enter value for salary: 25000
+Enter value for dept: 1
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1000,'john','smith','b',111,'12-june-12',25000,1)
+
+1 row created.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+SQL> insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+  2  ed;
+Enter value for eid: 1001
+Enter value for lname: larry
+Enter value for fname: becket
+Enter value for mname: t
+Enter value for jobid: 222
+Enter value for doj: 12-june-12
+Enter value for salary: 30000
+Enter value for dept: 2
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1001,'larry','becket','t',222,'12-june-12',30000,2)
+ed
+*
+
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+SQL> /
+Enter value for eid: 1001
+Enter value for lname: larry
+Enter value for fname: becket
+Enter value for mname: t
+Enter value for jobid: 222
+Enter value for doj: 12-june-12
+Enter value for salary: 30000
+Enter value for dept: 2
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1001,'larry','becket','t',222,'12-june-12',30000,2)
+
+1 row created.
+
+SQL> /
+Enter value for eid: 1002
+Enter value for lname: paul
+Enter value for fname: mathew
+Enter value for mname: p
+Enter value for jobid: 333
+Enter value for doj: 10-mar-12
+Enter value for salary: 20000
+Enter value for dept: 3
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1002,'paul','mathew','p',333,'10-mar-12',20000,3)
+
+1 row created.
+
+SQL> /
+Enter value for eid: 1003
+Enter value for lname: george
+Enter value for fname: thomas
+Enter value for mname: v
+Enter value for jobid: 222
+Enter value for doj: 13-jun-11
+Enter value for salary: 35000
+Enter value for dept: 1
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1003,'george','thomas','v',222,'13-jun-11',35000,1)
+
+1 row created.
+
+SQL> /
+Enter value for eid: 1004
+Enter value for lname: jacob
+Enter value for fname: mathew
+Enter value for mname: v
+Enter value for jobid: 111
+Enter value for doj: 10-feb-11
+Enter value for salary: 40000
+Enter value for dept: 2
+old   1: insert into employee values(&eid,'&lname','&fname','&mname',&jobid,'&doj',&salary,&dept)
+new   1: insert into employee values(1004,'jacob','mathew','v',111,'10-feb-11',40000,2)
+
+1 row created.
+
+SQL> select * from employee;
+  
+
+       EID LNAME           FNAME           MNAME                JOBID
+---------- --------------- --------------- --------------- ----------
+DOJ                      SALARY       DEPT
+-------------------- ---------- ----------
+      1000 john            smith           b                      111
+12-june-12                25000          1
+
+      1001 larry           becket          t                      222
+12-june-12                30000          2
+
+      1002 paul            mathew          p                      333
+10-mar-12                 20000          3
+
+
+       EID LNAME           FNAME           MNAME                JOBID
+---------- --------------- --------------- --------------- ----------
+DOJ                      SALARY       DEPT
+-------------------- ---------- ----------
+      1003 george          thomas          v                      222
+13-jun-11                 35000          1
+
+      1004 jacob           mathew          v                      111
+10-feb-11                 40000          2
+
+
+SQL> set linesize 200;
+SQL> select * from employee
+  2  ed;
+
+       EID LNAME           FNAME           MNAME                JOBID DOJ                      SALARY       DEPT
+---------- --------------- --------------- --------------- ---------- -------------------- ---------
+      1000 john            smith           b                      111 12-june-12                25000          1
+      1001 larry           becket          t                      222 12-june-12                30000          2
+      1002 paul            mathew          p                      333 10-mar-12                 20000          3
+      1003 george          thomas          v                      222 13-jun-11                 35000          1
+      1004 jacob           mathew          v                      111 10-feb-11                 40000          2
+
+SQL> alter table employee add(commision int);
+
+Table altered.
+
+SQL> select * from employee;
+  
+
+       EID LNAME           FNAME           MNAME                JOBID DOJ                      SALARY       DEPT  COMMISION
+---------- --------------- --------------- --------------- ---------- -------------------- ---------
+      1000 john            smith           b                      111 12-june-12                25000          1
+      1001 larry           becket          t                      222 12-june-12                30000          2
+      1002 paul            mathew          p                      333 10-mar-12                 20000          3
+      1003 george          thomas          v                      222 13-jun-11                 35000          1
+      1004 jacob           mathew          v                      111 10-feb-11                 40000          2
+SQL> update employee set commision=&commision where eid=&eid;
+Enter value for commision: 10
+Enter value for eid: 1000
+old   1: update employee set commision=&commision where eid=&eid
+new   1: update employee set commision=10 where eid=1000
+
+1 row updated.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* update employee set commision=&commision where eid=&eid
+SQL> /
+Enter value for commision: 50
+Enter value for eid: 1001
+old   1: update employee set commision=&commision where eid=&eid
+new   1: update employee set commision=50 where eid=1001
+
+1 row updated.
+
+SQL> /
+Enter value for commision: 25
+Enter value for eid: 1002
+old   1: update employee set commision=&commision where eid=&eid
+new   1: update employee set commision=25 where eid=1002
+
+1 row updated.
+
+SQL> /
+Enter value for commision: 30
+Enter value for eid: 1003
+old   1: update employee set commision=&commision where eid=&eid
+new   1: update employee set commision=30 where eid=1003
+
+1 row updated.
+
+SQL> /
+Enter value for commision: 40
+Enter value for eid: 1004
+old   1: update employee set commision=&commision where eid=&eid
+new   1: update employee set commision=40 where eid=1004
+
+1 row updated.
+
+SQL> select * from employeee
+  2  ed;
+select * from employeee
+              *
+
+SQL> select * from employee;
+
+       EID LNAME           FNAME           MNAME                JOBID DOJ                      SALARY       DEPT  COMMISION
+---------- --------------- --------------- --------------- ---------- -------------------- ---------
+      1000 john            smith           b                      111 12-june-12                25000          1         10
+      1001 larry           becket          t                      222 12-june-12                30000          2         50
+      1002 paul            mathew          p                      333 10-mar-12                 20000          3         25
+      1003 george          thomas          v                      222 13-jun-11                 35000          1         30
+      1004 jacob           mathew          v                      111 10-feb-11                 40000          2         40
+
+SQL> update employee set salary=(salary+0.1*salary) where dept=1;
+
+2 rows updated.
+
+SQL> select * from employee;
+
+
+       EID LNAME           FNAME           MNAME                JOBID DOJ                      SALARY       DEPT  COMMISION
+---------- --------------- --------------- --------------- ---------- -------------------- ---------
+      1000 john            smith           b                      111 12-june-12                27500          1         10
+      1001 larry           becket          t                      222 12-june-12                30000          2         50
+      1002 paul            mathew          p                      333 10-mar-12                 20000          3         25
+      1003 george          thomas          v                      222 13-jun-11                 38500          1         30
+      1004 jacob           mathew          v                      111 10-feb-11                 40000          2         40
+
+SQL> delete * from employee where dept=3;
+delete * from employee where dept=3
+       *
+
+SQL> delete from employee where dept=3
+  2  ed;
+ed
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* delete from employee where dept=3
+SQL> /
+
+1 row deleted.
+
+SQL> select * from employee
+  2  ed;
+
+       EID LNAME           FNAME           MNAME                JOBID DOJ                      SALARY       DEPT  COMMISION
+---------- --------------- --------------- --------------- ---------- -------------------- ---------
+      1000 john            smith           b                      111 12-june-12                27500          1         10
+      1001 larry           becket          t                      222 12-june-12                30000          2         50
+      1003 george          thomas          v                      222 13-jun-11                 38500          1         30
+      1004 jacob           mathew          v                      111 10-feb-11                 40000          2         40
+
+SQL> create view view3 as select eid,lname,fnmae,jobid,dept from employee;
+create view view3 as select eid,lname,fnmae,jobid,dept from employee
+                                      *
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create view view3 as select eid,lname,fname,jobid,dept from employee
+SQL> /
+
+View created.
+
+SQL> slect * from view3;
+SP2-0734: unknown command beginning "slect * fr..." - rest of line ignored.
+SQL> select * from view3;
+
+       EID LNAME           FNAME                JOBID       DEPT
+---------- --------------- --------------- ---------- ----------
+      1000 john            smith                  111          1
+      1001 larry           becket                 222          2
+      1003 george          thomas                 222          1
+      1004 jacob           mathew                 111          2
+
+SQL> select max(salary),min(salary),avg(salary) from employee group by dept;
+
+MAX(SALARY) MIN(SALARY) AVG(SALARY)
+----------- ----------- -----------
+      38500       27500       33000
+      40000       30000       35000
+
+SQL> select eid,lname,salary,from employee order by salary desc;
+select eid,lname,salary,from employee order by salary desc
+                        *
+QL> ed
+Wrote file afiedt.buf
+
+  1* select eid,lname,salary from employee order by salary desc
+SQL> /
+
+       EID LNAME               SALARY
+---------- --------------- ----------
+      1004 jacob                40000
+      1003 george               38500
+      1001 larry                30000
+      1000 john                 27500
+
+SQL> select count(*)from employee  group by dept;
+
+  COUNT(*)
+----------
+         2
+         2
+
+SQL> select dept,count(*) from employee group by dept;
+
+      DEPT   COUNT(*)
+---------- ----------
+         1          2
+         2          2
+
+SQL> 

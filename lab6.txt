@@ -1,0 +1,23 @@
+  1  create or replace function fac(a in number) return number as
+  2  BEGIN
+  3  IF (a=1) THEN
+  4  return 1;
+  5  ELSE
+  6  return (a*(fac(a-1)));
+  7  END IF;
+  8* END;
+SQL> /
+
+Function created.
+
+SQL> ed;
+Wrote file afiedt.buf
+
+  1  declare
+  2  test number;
+  3  begin
+  4  test:=fac(5);
+  5  dbms_output.Put_line(test ||''||' is factorial');
+  6* end;
+SQL> /
+120 is factorial

@@ -1,0 +1,34 @@
+  1  DECLARE
+  2  no number;
+  3  BEGIN
+  4  FOR no IN 1..10 LOOP
+  5  IF (mod(no,2)=0)  THEN
+  6  insert into even(no) values(no);
+  7  ELSE
+  8  insert into odd(no) values(no);
+  9  END IF;
+ 10  END LOOP;
+ 11* END;
+SQL> /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from even;
+
+        NO
+----------
+         2
+         4
+         6
+         8
+        10
+
+SQL> select * from odd;
+
+        NO
+----------
+         1
+         3
+         5
+         7
+         9
